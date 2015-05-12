@@ -16,7 +16,7 @@
   <parent>
     <groupId>org.geotools</groupId>
     <artifactId>unsupported</artifactId>
-    <version>13-SNAPSHOT</version>
+    <version>13.0</version>
   </parent>
 
 
@@ -26,6 +26,7 @@
   <groupId>org.geotools</groupId>
   <artifactId>gt-wfs-ng</artifactId>
   <packaging>jar</packaging>
+  <version>13.0.GEOMAJAS</version>
   <name>WFS client module (NG)</name>
   
 
@@ -102,39 +103,39 @@
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-xml</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-data</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
       <type>jar</type>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-referencing</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-sample-data</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools.xsd</groupId>
       <artifactId>gt-xsd-wfs</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>
     <dependency>
       <groupId>org.geotools.ogc</groupId>
       <artifactId>net.opengis.wfs</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>
      <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-cql</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
       <type>jar</type>
     </dependency>
     <dependency>
@@ -144,7 +145,7 @@
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-epsg-hsql</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
