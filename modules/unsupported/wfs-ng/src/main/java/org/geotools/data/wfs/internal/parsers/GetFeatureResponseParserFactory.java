@@ -61,6 +61,7 @@ public class GetFeatureResponseParserFactory extends AbstractGetFeatureResponseP
                     "text/xml; subtype=gml/2.1.2", //
                     "application/xml", //
                     "text/xml; subtype=gml/3.2", //
+                    "application/gml+xml", //
                     "application/gml+xml; version=3.2", //
                     "gml32" //
             ));

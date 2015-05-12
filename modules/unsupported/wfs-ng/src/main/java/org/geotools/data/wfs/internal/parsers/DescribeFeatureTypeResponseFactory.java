@@ -39,7 +39,8 @@ public class DescribeFeatureTypeResponseFactory implements WFSResponseFactory {
     @Override
     public boolean canProcess(WFSRequest originatingRequest, String contentType) {
         return originatingRequest instanceof DescribeFeatureTypeRequest
-                && (contentType == null || contentType.startsWith("text/xml"));
+                && (contentType == null || contentType.startsWith("text/xml") || contentType
+                        .startsWith("application/gml+xml"));
     }
 
     @Override
@@ -49,8 +50,8 @@ public class DescribeFeatureTypeResponseFactory implements WFSResponseFactory {
 
     @Override
     public List<String> getSupportedOutputFormats() {
-        return Arrays.asList("text/xml", "text/xml; subtype=gml/3.1.1",
-                "text/xml; subtype=gml/3.2", "XMLSCHEMA", "text/gml; subtype=gml/3.1.1");
+        return Arrays.asList("text/xml", "text/xml; subtype=gml/3.1.1", "text/xml; subtype=gml/3.2", "XMLSCHEMA",
+                "text/gml; subtype=gml/3.1.1", "application/gml+xml; subType=gml/3.1.1");
     }
 
     @Override
