@@ -35,8 +35,12 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import net.opengis.wfs.FeatureTypeType;
+
 import org.apache.commons.io.IOUtils;
+import org.eclipse.emf.common.util.EList;
+import org.geotools.data.wfs.internal.Versions;
 import org.geotools.data.wfs.internal.WFSOperationType;
 import org.geotools.data.wfs.internal.WFSRequest;
 import org.geotools.xs.bindings.XSDoubleBinding;
@@ -63,14 +67,30 @@ public class MapServerWFSStrategy extends StrictWFS_1_x_Strategy {
     }
  
     @Override
-    public FeatureTypeType translateTypeInfo(FeatureTypeType typeInfo){
-        if ("wfs".equals(typeInfo.getName().getPrefix()) || 
-            "http://www.opengis.net/wfs".equals(typeInfo.getName().getNamespaceURI())) {
-            QName newName = new QName( "http://mapserver.gis.umn.edu/mapserver", typeInfo.getName().getLocalPart(), "ms");
-            typeInfo.setName(newName);
-        }
-        return typeInfo;
-    }
+	public FeatureTypeType translateTypeInfo(FeatureTypeType typeInfo) {
+		if ("wfs".equals(typeInfo.getName().getPrefix())
+				|| "http://www.opengis.net/wfs".equals(typeInfo.getName().getNamespaceURI())) {
+			QName newName = new QName("http://mapserver.gis.umn.edu/mapserver", typeInfo.getName().getLocalPart(), "ms");
+			typeInfo.setName(newName);
+		}
+		// force urn:x-ogc:def:crs:EPSG:4326 in case of EPSG:4326 (mapserver follows epsg database here !)
+		if (Versions.v1_1_0.equals(getServiceVersion())) {
+			if ("EPSG:4326".equals(typeInfo.getDefaultSRS())) {
+				typeInfo.setDefaultSRS("urn:x-ogc:def:crs:EPSG:4326");
+			}
+			if (typeInfo.getOtherSRS() != null) {
+				@SuppressWarnings("unchecked")
+				EList<String> other = typeInfo.getOtherSRS();
+				for (int i = 0; i < other.size(); i++) {
+					String srs = (String) other.get(i);
+					if ("EPSG:4326".equals(srs)) {
+						other.set(i, "urn:x-ogc:def:crs:EPSG:4326");
+					}
+				}
+			}
+		}
+		return typeInfo;
+	}
 
     @Override
     public Map<QName, Class<?>> getFieldTypeMappings() {
