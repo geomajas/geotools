@@ -176,6 +176,7 @@
       <OtherCRS>urn:ogc:def:crs:OGC::CRS84</OtherCRS>
       <OtherCRS>CRS:84</OtherCRS>
       <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
         <Format>text/xml; subtype=gml/3.2.1</Format>
       </OutputFormats>
       <ows:WGS84BoundingBox>

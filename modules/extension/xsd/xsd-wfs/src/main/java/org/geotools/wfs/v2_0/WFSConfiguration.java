@@ -17,6 +17,7 @@ import org.geotools.filter.v2_0.FES;
 import org.geotools.filter.v2_0.FESConfiguration;
 import org.geotools.gml3.XSDIdRegistry;
 import org.geotools.ows.v1_1.OWSConfiguration;
+import org.geotools.wfs.v2_0.bindings.OutputFormatListTypeBinding;
 import org.geotools.wfs.v2_0.bindings.EnvelopePropertyTypeBinding;
 import org.geotools.wfs.v2_0.bindings.FeatureTypeListTypeBinding;
 import org.geotools.wfs.v2_0.bindings.FeatureTypeTypeBinding;
@@ -115,6 +116,7 @@ public class WFSConfiguration extends Configuration {
         binding(bindings, WFS.NativeType);
 //        container.registerComponentImplementation(WFS.nonNegativeIntegerOrUnknown,NonNegativeIntegerOrUnknownBinding.class);
 //        container.registerComponentImplementation(WFS.OutputFormatListType,OutputFormatListTypeBinding.class);
+        bindings.put(WFS.OutputFormatListType, OutputFormatListTypeBinding.class);
         binding(bindings, WFS.ParameterExpressionType);
         binding(bindings, WFS.ParameterType);
 //        container.registerComponentImplementation(WFS.positiveIntegerWithStar,PositiveIntegerWithStarBinding.class);

@@ -496,13 +496,13 @@ public class StrictWFS_2_0_Strategy extends AbstractWFSStrategy {
     @Override
     public Set<String> getServerSupportedOutputFormats(WFSOperationType operation) {
          String parameterName;
-
+ 
         switch (operation) {
         case GET_FEATURE:
         case DESCRIBE_FEATURETYPE:
         case GET_FEATURE_WITH_LOCK:
             parameterName = "outputFormat";
-            break;
+             break;
         case TRANSACTION:
             parameterName = "inputFormat";
             break;
@@ -518,6 +518,9 @@ public class StrictWFS_2_0_Strategy extends AbstractWFSStrategy {
 
         Set<String> serverSupportedFormats;
         serverSupportedFormats = findParameters(operationMetadata, parameterName);
+		if (serverSupportedFormats.isEmpty()) {
+			serverSupportedFormats.add("application/gml+xml; version=3.2");
+		}
         return serverSupportedFormats;
     }
 

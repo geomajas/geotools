@@ -123,11 +123,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.geotools.xsd</groupId>
-      <artifactId>gt-xsd-wfs</artifactId>
-      <version>13.0</version>
-    </dependency>
-    <dependency>
       <groupId>org.geotools.ogc</groupId>
       <artifactId>net.opengis.wfs</artifactId>
       <version>13.0</version>

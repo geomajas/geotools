@@ -16,7 +16,7 @@
   <parent>
     <groupId>org.geotools.xsd</groupId>
     <artifactId>xsd</artifactId>
-    <version>13-SNAPSHOT</version>
+    <version>13.0</version>
   </parent>
   
   <!-- =========================================================== -->
@@ -24,6 +24,7 @@
   <!-- =========================================================== -->
   <groupId>org.geotools.xsd</groupId>
   <artifactId>gt-xsd-wfs</artifactId>
+  <version>13.0.GM1</version>
   <packaging>jar</packaging>
   <name>WFS XML Support</name>
   
@@ -71,7 +72,7 @@
     <dependency>
       <groupId>org.geotools.ogc</groupId>
       <artifactId>net.opengis.wfs</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
       <!--version>1.1.0</version>
       <exclusions>      
         <exclusion>
@@ -87,34 +88,34 @@
     <dependency>
       <groupId>org.geotools.xsd</groupId>
       <artifactId>gt-xsd-filter</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>    
     <dependency>
       <groupId>org.geotools.xsd</groupId>
       <artifactId>gt-xsd-fes</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>    
     <dependency>
       <groupId>org.geotools.xsd</groupId>
       <artifactId>gt-xsd-ows</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>    
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-epsg-hsql</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-sample-data</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-data</artifactId>
-      <version>${project.version}</version>
+      <version>13.0</version>
     </dependency>    
      <dependency>
       <groupId>xmlunit</groupId>
@@ -128,7 +129,7 @@
       <plugin>
         <groupId>org.geotools.maven</groupId>
         <artifactId>xmlcodegen</artifactId>
-        <version>${project.version}</version>
+        <version>13.0</version>
         <configuration>
           <schemaLocation>wfs.xsd</schemaLocation>
           <schemaSourceDirectory>${basedir}/src/main/resources/org/geotools/wfs/v2_0</schemaSourceDirectory>

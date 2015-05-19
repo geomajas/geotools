@@ -33,6 +33,8 @@ import net.opengis.wfs20.Wfs20Factory;
 import org.eclipse.emf.ecore.EObject;
 import org.geotools.wfs.v2_0.WFS;
 import org.geotools.xml.AbstractComplexEMFBinding;
+import org.geotools.xml.ElementInstance;
+import org.geotools.xml.Node;
 
 
 public class FeatureTypeTypeBinding extends AbstractComplexEMFBinding {      
@@ -53,7 +55,15 @@ public class FeatureTypeTypeBinding extends AbstractComplexEMFBinding {
         return FeatureTypeType.class;
     }
     
-    @SuppressWarnings({ "unchecked", "nls" })
+    
+    
+    @Override
+	public Object parse(ElementInstance instance, Node node, Object value) throws Exception {
+		// TODO Auto-generated method stub
+		return super.parse(instance, node, value);
+	}
+
+	@SuppressWarnings({ "unchecked", "nls" })
     @Override
     protected void setProperty(EObject object, String property, Object value, boolean lax) {
         if ("OtherCRS".equals(property)) {
@@ -92,7 +102,7 @@ public class FeatureTypeTypeBinding extends AbstractComplexEMFBinding {
                 ((FeatureTypeType) object).getKeywords().add(kwd);
                 return;
             }
-        } else if ("OutputFormats".equals(property)) {
+         } else if ("OutputFormats".equals(property)) {
             String outputFormatValue = null;
             if (value instanceof String) {
                 outputFormatValue = (String)value;
@@ -108,6 +118,8 @@ public class FeatureTypeTypeBinding extends AbstractComplexEMFBinding {
                 oflt.getFormat().add(outputFormatValue);
                 
                 return;
+            } else {
+                super.setProperty(object, property, value, lax);
             }
         }
         

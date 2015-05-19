@@ -117,6 +117,7 @@ public class WFSClientTest {
     public void testInit_2_0() throws Exception {
         testInit("GeoServer_2.2.x/2.0.0/GetCapabilities.xml", "2.0.0");
         testInit("Degree_3.0/2.0.0/GetCapabilities.xml", "2.0.0");
+        testInit("Degree_ri/2.0.0/GetCapabilities.xml", "2.0.0");
     }
 
     @Test
