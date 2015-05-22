@@ -62,6 +62,7 @@ public class GmlGetFeatureResponseParserFactory extends AbstractGetFeatureRespon
                     "text/gml; subtype=gml/3.1.1",// the incorrectly advertised GeoServer format
                     "GML2",//
                     "text/xml; subtype=gml/2.1.2",//
+                    "application/gml+xml", //
                     "application/xml" //
             ));
     

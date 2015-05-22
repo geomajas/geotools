@@ -18,6 +18,7 @@ package org.geotools.data.wfs.internal.parsers;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.geotools.data.ows.HTTPResponse;
@@ -31,17 +32,41 @@ import org.geotools.ows.ServiceException;
 
 public class DescribeFeatureTypeResponseFactory implements WFSResponseFactory {
 
+    private static final List<String> SUPPORTED_FORMATS = Collections.unmodifiableList(Arrays.asList(//
+            "text/xml", //
+            "text/xml; subtype=gml/3.1.1", //
+            "text/xml; subtype=gml/3.2", //
+            "text/xml; subType=gml/3.1.1", //
+            "text/xml; subType=gml/3.2", //
+            "XMLSCHEMA",//
+            "text/gml; subtype=gml/3.1.1", //
+            "text/gml; subType=gml/3.1.1", //
+            "application/gml+xml", //
+            "application/gml+xml; subType=gml/3.1.1",//
+            "application/gml+xml; version=3.2"));
+
     @Override
     public boolean isAvailable() {
         return true;
     }
-
-    @Override
-    public boolean canProcess(WFSRequest originatingRequest, String contentType) {
-        return originatingRequest instanceof DescribeFeatureTypeRequest
-                && (contentType == null || contentType.startsWith("text/xml") || contentType
-                        .startsWith("application/gml+xml"));
+    
+    public boolean canProcess(final WFSRequest request, final String contentType) {
+        if (!canProcess(request.getOperation())) {
+            return false;
+        }
+        boolean matches = getSupportedOutputFormats().contains(contentType);
+        if (!matches) {
+            // fuzzy match
+            for (String supported : getSupportedOutputFormats()) {
+                if (supported.startsWith(contentType) || contentType.startsWith(supported)) {
+                    matches = true;
+                    break;
+                }
+            }
+        }
+        return matches;
     }
+
 
     @Override
     public boolean canProcess(WFSOperationType operation) {
@@ -50,8 +75,7 @@ public class DescribeFeatureTypeResponseFactory implements WFSResponseFactory {
 
     @Override
     public List<String> getSupportedOutputFormats() {
-        return Arrays.asList("text/xml", "text/xml; subtype=gml/3.1.1", "text/xml; subtype=gml/3.2", "XMLSCHEMA",
-                "text/gml; subtype=gml/3.1.1", "application/gml+xml; subType=gml/3.1.1","application/gml+xml; version=3.2");
+        return SUPPORTED_FORMATS;
     }
 
     @Override
