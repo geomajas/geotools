@@ -229,6 +229,8 @@ public class StrictWFS_1_x_Strategy extends AbstractWFSStrategy {
 
         if (Versions.v1_0_0.equals(version)) {
             dft.setOutputFormat(null);
+        } else {
+            dft.setOutputFormat(request.getOutputFormat());
         }
 
         QName typeName = request.getTypeName();
