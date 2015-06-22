@@ -24,7 +24,7 @@
   <!-- =========================================================== -->
   <groupId>org.geotools.xsd</groupId>
   <artifactId>gt-xsd-wfs</artifactId>
-  <version>13.0.GM2</version>
+  <version>13.0.GM3</version>
   <packaging>jar</packaging>
   <name>WFS XML Support</name>
   
